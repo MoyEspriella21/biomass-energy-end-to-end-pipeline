@@ -251,3 +251,7 @@ terraform.rc
 __pycache__/
 *.pyc
 .pytest_cache/
+
+logs/runs
+logs/*.log
+*.py[cod]

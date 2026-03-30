@@ -1,0 +1,6 @@
+requests
+google-cloud-storage
+urllib3
+pandas
+openpyxl
+xlrd
