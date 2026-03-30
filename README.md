@@ -540,6 +540,8 @@ To translate our data warehouse architecture into actionable business insights, 
 
 The dashboard exceeds the minimum requirement of two tiles, featuring three core visual components designed with clear titles and references:
 
+![Biomass Energy Dashboard](images/0601.png)
+
 #### 1. Categorical Distribution: Installed Capacity vs. Generation Potential (Bar Chart)
 This comparative bar chart plots the existing energy infrastructure (Real Generation) against the theoretical limit (Potential Generation) across the top Mexican states. 
 * **Insight:** We observed a massive visual disparity. While states like Veracruz have *some* installed capacity (blue bars), the theoretical potential (dark blue bars) towers over it. Crucially, because we used a `LEFT JOIN` in our DWH, we can see states like Jalisco and Sinaloa that have massive agricultural potential but **zero** installed biomass capacity.
@@ -618,4 +620,3 @@ Bruin will automatically:
 
 ### 5. Connecting the Dashboard
 Once the pipeline finishes successfully, the `rep_comparativo_biomasa` table will be ready in your BigQuery dataset. You can then connect any BI tool (like Looker Studio, Metabase, or Tableau) directly to this table to visualize the Opportunity Gap.
-```
