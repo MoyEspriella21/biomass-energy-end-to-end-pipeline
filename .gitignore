@@ -255,3 +255,5 @@ __pycache__/
 logs/runs
 logs/*.log
 *.py[cod]
+
+raw sources/
