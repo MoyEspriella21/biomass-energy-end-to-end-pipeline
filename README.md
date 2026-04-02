@@ -620,3 +620,77 @@ Bruin will automatically:
 
 ### 5. Connecting the Dashboard
 Once the pipeline finishes successfully, the `rep_comparativo_biomasa` table will be ready in your BigQuery dataset. You can then connect any BI tool (like Looker Studio, Metabase, or Tableau) directly to this table to visualize the Opportunity Gap.
+
+# Part 4: AI-Powered Data Analysis with Bruin Cloud
+
+To take this project beyond data engineering and into actionable business intelligence, we leveraged the **Bruin Cloud AI Data Analyst**. This feature allows stakeholders to interact with the finalized Data Warehouse using natural language, democratizing access to complex geospatial and energy data.
+
+## Bruin Cloud Setup & AI Agent Configuration
+
+Instead of building a local LLM tool from scratch, we connected our existing Google Cloud Platform (GCP) infrastructure directly to Bruin Cloud. 
+
+The setup process was seamless and followed the official guidelines detailed in this [Bruin Cloud Setup Tutorial](https://youtu.be/uBqjLEwF8rc?si=ZOVB6fyVPIlouyEW). By providing our GCP credentials and Project ID, the Bruin AI Agent automatically introspected our BigQuery dataset. It recognized the schema, data types, and partitions of our final optimized table (`rep_comparativo_biomasa`), instantly becoming ready to answer complex business questions by writing its own SQL under the hood.
+
+## Analytical Prompts and Business Insights
+
+We interacted with the Bruin AI Agent to extract the most critical insights regarding Mexico's biomass energy potential. Below are the specific prompts we used and the AI's analytical outputs.
+
+### The National KPI: Quantifying the Opportunity
+
+To understand the macro scale of the problem, we asked the agent to calculate the total national energy gap.
+
+**Prompt:** > *"Using the `rep_comparativo_biomasa` table, calculate the total national opportunity gap (brecha_oportunidad_gwh). Please provide the total sum in GWh and write a short executive summary explaining what this number represents in terms of untapped renewable energy in Mexico."*
+
+**Result:**
+
+The agent successfully wrote the SQL query to aggregate the data, revealing a massive **31,155.17 GWh** opportunity gap. It highlighted a staggering fact: roughly **95.5%** of the identified biomass energy potential in the country remains undeveloped.
+
+![National KPI Insight](images/0801.png)
+
+### Top 5 States: The Investment Compass
+
+Next, we needed to know *where* to direct infrastructure investments. 
+
+**Prompt:**
+
+> *"Based on the `rep_comparativo_biomasa` dataset, identify the top 5 states with the largest opportunity gap. Please format the output as a markdown table showing: State, Potential Generation, Current Installed Capacity, and the Opportunity Gap. Highlight the state at the number 1 spot."*
+
+**Result:**
+
+The AI generated a clean markdown table, identifying **Jalisco** as the undisputed #1 state with the largest untapped potential, followed closely by Veracruz and Sinaloa.
+
+![Top 5 States Analysis](images/0802.png)
+
+### Deep Dive: Jalisco vs. Veracruz 
+
+To understand the nuance behind the data, we asked the AI to act as an analyst and contrast the top two states.
+
+**Prompt:**
+
+> *"Act as a data analyst and review the specific numbers for Jalisco and Veracruz in the `rep_comparativo_biomasa` table. Contrast their current installed biomass capacity against their potential generation. What does the data tell us about the different logistical or infrastructural challenges in these two specific states?"*
+
+**Result:**
+
+This was the most impressive insight. The AI accurately diagnosed that these states face entirely different challenges:
+
+* **Jalisco** is a "scale-up" problem: Huge agricultural resource base, but severely underbuilt infrastructure.
+
+* **Veracruz** is a "utilization and logistics" problem: It already has significant installed capacity, but the massive gap suggests bottlenecks in feedstock collection, transport, or plant utilization.
+
+![Jalisco vs Veracruz Part 1](images/0803.png)
+![Jalisco vs Veracruz Part 2](images/0804.png)
+
+### Visualizing the Data in Chat
+
+Finally, we tested the agent's visualization capabilities directly within the chat interface.
+
+**Prompt:**
+
+> *"Can you generate a bar chart comparing the installed capacity versus the potential generation for the top 10 states in the `rep_comparativo_biomasa` table?"*
+
+**Result:**
+
+The agent fetched the data and rendered a clear, accurate bar chart comparing the installed capacity (blue) against the massive potential generation (green). This proved that stakeholders can get board-ready visuals without ever leaving the Slack/Bruin chat environment or opening a separate BI tool.
+
+![Bar Chart Generation](images/0805.png)
+![Bar Chart Result](images/0806.png)
