@@ -552,7 +552,7 @@ A heat map visualizing the `brecha_oportunidad_gwh` across Mexico.
 
 #### 3. National Opportunity KPI (Scorecard)
 A compact numeric scorecard summarizing the total Opportunity Gap across all 32 states.
-* **Insight:** The dashboard reveals a staggering **~41.3K GWh** of unexploited energy. This is not gross potential; this is the *net* energy left on the table after subtracting the current biomass operations. This single metric validates the entire business case for expanding biomass infrastructure in Mexico.
+* **Insight:** The dashboard reveals a staggering **~31.2K GWh** of unexploited energy. This is not gross potential; this is the *net* energy left on the table after subtracting the current biomass operations. This single metric validates the entire business case for expanding biomass infrastructure in Mexico.
 
 #### *A Note on Temporal Distribution:*
 *While the rubric suggests a temporal line graph, the raw agricultural census data used for this specific pipeline represents a single, consolidated annual cycle (2024). To ensure the pipeline is temporally scalable, we engineered a static `DATE` partition (`2024-01-01`) in the DWH layer and linked it to Looker Studio's Date Range Control. As future annual datasets (2025, 2026) are ingested via Bruin, the dashboard is fully architected to display year-over-year temporal distributions automatically.*
